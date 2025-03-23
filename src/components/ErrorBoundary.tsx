@@ -29,7 +29,7 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-5 text-center text-red-600">
+        <div className="h-screen bg-gray-900 p-5 text-center text-red-600">
           <h2>Something wrong!</h2>
           <p>
             Please contact{' '}
