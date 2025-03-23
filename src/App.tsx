@@ -1,15 +1,22 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router'
-import Home from './pages/Home'
-import Profile from './pages/Profile'
-import NotFound from './pages/NotFound'
+import ErrorBoundary from './components/ErrorBoundary'
+
+const Home = lazy(() => import('./pages/Home'))
+const Profile = lazy(() => import('./pages/Profile'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 const App = () => {
   return (
-    <Routes>
-      <Route index element={<Home />} />
-      <Route path="profile" element={<Profile />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <ErrorBoundary>
+      <Suspense fallback={<div>Loading</div>}>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
   )
 }
 
