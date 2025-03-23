@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { AnimatePresence } from 'motion/react'
 
 import WithHeaderAndFooter from 'layout/WithHeaderAndFooter'
-import ErrorBoundary from 'components/ErrorBoundary'
+import ErrorBoundary from './ErrorBoundary'
 import Loading from 'components/Loading'
 import Pages from 'pages'
 

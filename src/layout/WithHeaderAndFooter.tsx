@@ -2,8 +2,8 @@ import { FC, PropsWithChildren } from 'react'
 import { motion } from 'motion/react'
 import { useLocation } from 'react-router'
 
-import Header from 'components/Header'
-import Footer from 'components/Footer'
+import Header from './Header'
+import Footer from './Footer'
 
 const WithHeaderAndFooter: FC<PropsWithChildren> = ({ children }) => {
   const { pathname } = useLocation()
