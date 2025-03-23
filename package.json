@@ -20,11 +20,14 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint src --max-warnings=0",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@react-router/dev": "^7.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router": "^7.4.0",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
@@ -45,6 +48,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "happy-dom": "^15.11.7",
+    "husky": "^9.1.7",
     "postcss": "^8.5.3",
     "prettier": "3.1.1",
     "tailwindcss": "^3.4.17",
