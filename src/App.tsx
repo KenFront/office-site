@@ -1,25 +1,18 @@
-import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router'
+import { Suspense } from 'react'
 import { AnimatePresence } from 'motion/react'
 
 import WithHeaderAndFooter from 'layout/WithHeaderAndFooter'
 import ErrorBoundary from 'components/ErrorBoundary'
-
-const Home = lazy(() => import('pages/Home'))
-const Profile = lazy(() => import('pages/Profile'))
-const NotFound = lazy(() => import('pages/NotFound'))
+import Loading from 'components/Loading'
+import Pages from 'pages'
 
 const App = () => {
   return (
     <ErrorBoundary>
       <WithHeaderAndFooter>
-        <Suspense fallback={<div>Loading</div>}>
+        <Suspense fallback={<Loading />}>
           <AnimatePresence mode="wait">
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <Pages />
           </AnimatePresence>
         </Suspense>
       </WithHeaderAndFooter>
