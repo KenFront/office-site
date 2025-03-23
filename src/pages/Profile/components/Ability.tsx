@@ -56,7 +56,7 @@ const Ability = () => {
           points={mutableHexagon}
           fill="rgba(0, 150, 255, 0.5)"
           stroke="blue"
-          strokeWidth="2"
+          strokeWidth="1"
           animate={{ points: mutableHexagon }}
           transition={{ duration: 2 }}
         />
