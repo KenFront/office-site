@@ -9,7 +9,7 @@ const WithHeaderAndFooter: FC<PropsWithChildren> = ({ children }) => {
   const { pathname } = useLocation()
 
   return (
-    <section className="h-screen w-screen bg-gray-900 text-gray-400">
+    <section className="h-screen w-screen overflow-y-auto overflow-x-hidden bg-gray-900 text-gray-400">
       <Header />
       <motion.div
         key={pathname}

@@ -19,8 +19,8 @@ const Header = () => {
   const { pathname } = useLocation()
 
   return (
-    <div className="w-full">
-      <div className="relative overflow-hidden bg-gray-800 shadow-md sm:rounded-lg">
+    <header className="sticky top-0 z-10 w-full">
+      <div className="relative bg-gray-800 shadow-md sm:rounded-lg">
         <div className="flex flex-row items-center justify-between space-x-4 space-y-0 p-4">
           <div className="flex gap-x-2 text-gray-200">
             <Cat />
@@ -51,7 +51,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 
