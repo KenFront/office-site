@@ -11,7 +11,7 @@ const Collapse = ({
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="w-[80vw] rounded-2xl border border-gray-300 p-2">
+    <div className="w-[80vw] rounded-2xl p-2">
       <motion.button
         animate={{
           borderRadius: isOpen

@@ -9,10 +9,10 @@ const Profile = () => {
         <Ability />
       </Collapse>
       <Collapse title="About">
-        <div>me</div>
+        <div>WIP</div>
       </Collapse>
       <Collapse title="Experience">
-        <div>me</div>
+        <div>WIP</div>
       </Collapse>
     </div>
   )
