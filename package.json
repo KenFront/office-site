@@ -30,6 +30,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^7.4.0",
+    "react-use": "^17.6.0",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
@@ -68,7 +69,12 @@
     ]
   },
   "lint-staged": {
-    "*.css": ["prettier --write"],
-    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"]
+    "*.css": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

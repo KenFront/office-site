@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { BookOpen, Bug, Gift, Hammer, School, Send } from 'lucide-react'
 
 import Typewriter from 'components/Typewriter'
+import usePlatform from 'hooks/usePlatform'
 
 const CARDS = [
   {
@@ -32,6 +33,7 @@ const CARDS = [
 ]
 
 const Home = () => {
+  const platform = usePlatform()
   const [hoverId, setHoverId] = useState('')
 
   return (
@@ -45,7 +47,9 @@ const Home = () => {
           onHoverEnd={() => setHoverId('')}
         >
           <div>{card.icon}</div>
-          {hoverId === card.text && <Typewriter text={card.text} />}
+          {(hoverId === card.text || platform !== 'Desktop') && (
+            <Typewriter text={card.text} />
+          )}
         </motion.div>
       ))}
     </div>
