@@ -3,13 +3,15 @@ import { motion } from 'motion/react'
 import { useNavigate, useLocation } from 'react-router'
 import { twMerge } from 'tailwind-merge'
 
+import PAGE from 'pages/constant'
+
 const TABS = [
   {
-    path: '/',
+    path: PAGE.Index,
     content: <Home className="hover:text-gray-200" size="20px" />
   },
   {
-    path: '/profile',
+    path: PAGE.Profile,
     content: <User className="hover:text-gray-200" size="20px" />
   }
 ]

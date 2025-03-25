@@ -1,39 +1,50 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import { BookOpen, Bug, Gift, Hammer, School, Send } from 'lucide-react'
+import { useNavigate } from 'react-router'
+import { twMerge } from 'tailwind-merge'
 
 import Typewriter from 'components/Typewriter'
 import usePlatform from 'hooks/usePlatform'
 
+import PAGE from '../constant'
+
 const CARDS = [
   {
+    text: 'Tool',
+    icon: <Hammer />,
+    path: PAGE.Tool
+  },
+  {
     text: 'Document',
-    icon: <BookOpen />
+    icon: <BookOpen />,
+    path: PAGE.Document
   },
   {
     text: 'News',
-    icon: <Send />
+    icon: <Send />,
+    path: ''
   },
   {
     text: 'Tutorial',
-    icon: <School />
+    icon: <School />,
+    path: ''
   },
   {
     text: 'Bug',
-    icon: <Bug />
-  },
-  {
-    text: 'Tool',
-    icon: <Hammer />
+    icon: <Bug />,
+    path: ''
   },
   {
     text: 'Product',
-    icon: <Gift />
+    icon: <Gift />,
+    path: ''
   }
 ]
 
 const Home = () => {
   const platform = usePlatform()
+  const navigate = useNavigate()
   const [hoverId, setHoverId] = useState('')
 
   return (
@@ -41,10 +52,16 @@ const Home = () => {
       {CARDS.map((card) => (
         <motion.div
           key={card.text}
-          className="flex min-h-[300px] w-[200px] cursor-pointer flex-col flex-wrap items-center justify-center rounded-xl border-2 border-blue-100 hover:text-gray-100"
+          className={twMerge(
+            'flex min-h-[300px] w-[200px] flex-col flex-wrap items-center justify-center rounded-xl border-2 border-blue-100 hover:text-gray-100',
+            card.path && 'cursor-pointer'
+          )}
           whileHover={{ scale: 1.2 }}
           onHoverStart={() => setHoverId(card.text)}
           onHoverEnd={() => setHoverId('')}
+          onClick={() => {
+            if (card.path) navigate(card.path)
+          }}
         >
           <div>{card.icon}</div>
           {(hoverId === card.text || platform !== 'Desktop') && (
