@@ -14,7 +14,7 @@ const Tool = () => {
       <Collapse title="Trends">
         <ul className="list-disc pl-5">
           <li>
-            <ExternalLink link="https://npmtrends.com/" name="Npm trends" />
+            <ExternalLink link="https://npmtrends.com/" name="NPM trends" />
           </li>
           <li>
             <ExternalLink
@@ -35,7 +35,7 @@ const Tool = () => {
           <li>
             <ExternalLink
               link="https://developer.apple.com/support/app-store/"
-              name="Ios version"
+              name="iOS version"
             />
           </li>
         </ul>

@@ -7,7 +7,7 @@ const Document = () => {
       <Collapse title="Social Media">
         <ul className="list-disc pl-5">
           <li>
-            <ExternalLink link="https://ogp.me/" name="Og" />
+            <ExternalLink link="https://ogp.me/" name="OG" />
           </li>
         </ul>
       </Collapse>
@@ -16,25 +16,31 @@ const Document = () => {
           <li>
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy"
-              name="Csp"
+              name="CSP"
             />
           </li>
           <li>
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS"
-              name="Xss"
+              name="XSS"
             />
           </li>
           <li>
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/CSRF_prevention"
-              name="Csrf"
+              name="CSRF"
             />
           </li>
           <li>
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies"
               name="Cookie"
+            />
+          </li>
+          <li>
+            <ExternalLink
+              link="https://ssl-config.mozilla.org/"
+              name="SSL config"
             />
           </li>
         </ul>
@@ -45,6 +51,18 @@ const Document = () => {
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
               name="PWA"
+            />
+          </li>
+          <li>
+            <ExternalLink
+              link="https://web.dev/articles/critical-rendering-path/render-tree-construction"
+              name="Render tree"
+            />
+          </li>
+          <li>
+            <ExternalLink
+              link="https://www.measurethat.net/Benchmarks"
+              name="Javascript benchmark"
             />
           </li>
         </ul>
@@ -62,6 +80,12 @@ const Document = () => {
           </li>
           <li>
             <ExternalLink
+              link="https://opensource.org/license"
+              name="License"
+            />
+          </li>
+          <li>
+            <ExternalLink
               link="https://nerdcave.com/tailwind-cheat-sheet"
               name="Tailwind"
             />
@@ -72,19 +96,19 @@ const Document = () => {
           <li>
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/HTTP"
-              name="Http"
+              name="HTTP"
             />
           </li>
           <li>
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/CSS"
-              name="Css"
+              name="CSS"
             />
           </li>
           <li>
             <ExternalLink
               link="https://developer.mozilla.org/en-US/docs/Web/HTML"
-              name="Html"
+              name="HTML"
             />
           </li>
         </ul>
