@@ -2,11 +2,26 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import { VitePWA } from 'vite-plugin-pwa'
+
+import manifest from './manifest.json'
 // import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config https://vitest.dev/config
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    VitePWA({
+      manifest,
+      includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
+      devOptions: { enabled: false },
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}']
+      }
+    })
+  ],
   build: {
     rollupOptions: {
       output: {
@@ -27,11 +42,5 @@ export default defineConfig({
         // })
       ]
     }
-  },
-  test: {
-    globals: true,
-    environment: 'happy-dom',
-    setupFiles: '.vitest/setup',
-    include: ['**/test.{ts,tsx}']
   }
 })
