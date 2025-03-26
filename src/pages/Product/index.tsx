@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge'
 import Typewriter from 'components/Typewriter'
 import usePlatform from 'hooks/usePlatform'
 
-import PAGE from './constant'
+import PAGE from '../constant'
 
 const CARDS = [
   {
