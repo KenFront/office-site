@@ -1,38 +1,23 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { BookOpen, Gift, Hammer, School } from 'lucide-react'
+import { ListTodo } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { twMerge } from 'tailwind-merge'
 
 import Typewriter from 'components/Typewriter'
 import usePlatform from 'hooks/usePlatform'
 
-import PAGE from '../constant'
+import PAGE from './constant'
 
 const CARDS = [
   {
-    text: 'Tool',
-    icon: <Hammer />,
-    path: PAGE.Tool
-  },
-  {
-    text: 'Document',
-    icon: <BookOpen />,
-    path: PAGE.Document
-  },
-  {
-    text: 'Tutorial',
-    icon: <School />,
-    path: PAGE.Tutorial
-  },
-  {
-    text: 'Product',
-    icon: <Gift />,
-    path: PAGE.Product
+    text: 'Todolist',
+    icon: <ListTodo />,
+    path: PAGE.Todolist
   }
 ]
 
-const Home = () => {
+const Product = () => {
   const platform = usePlatform()
   const navigate = useNavigate()
   const [hoverId, setHoverId] = useState('')
@@ -62,4 +47,4 @@ const Home = () => {
     </div>
   )
 }
-export default Home
+export default Product

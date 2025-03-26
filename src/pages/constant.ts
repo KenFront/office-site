@@ -3,7 +3,9 @@ const PAGE = Object.freeze({
   Profile: '/profile',
   Tool: '/tool',
   Document: '/Document',
-  Tutorial: '/Tutorial'
+  Tutorial: '/Tutorial',
+  Product: '/product',
+  Todolist: '/product/todolist'
 })
 
 export default PAGE
