@@ -12,6 +12,9 @@ const Tutorial = () => {
               name="Freecodecamp"
             />
           </li>
+          <li>
+            <ExternalLink link="https://roadmap.sh/" name="Roadmap" />
+          </li>
         </ul>
       </Collapse>
       <Collapse title="Interview">
