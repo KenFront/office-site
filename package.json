@@ -15,6 +15,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:mock": "vite --mode mock",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest",
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "@react-router/dev": "^7.4.0",
+    "@tanstack/react-query": "^5.71.0",
     "@xstate/react": "^5.0.3",
     "lucide-react": "^0.483.0",
     "motion": "^12.5.0",
@@ -55,6 +57,7 @@
     "happy-dom": "^15.11.7",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
+    "msw": "^2.7.3",
     "postcss": "^8.5.3",
     "prettier": "3.1.1",
     "rollup-plugin-visualizer": "^5.14.0",
@@ -68,7 +71,8 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@swc/core",
-      "esbuild"
+      "esbuild",
+      "msw"
     ]
   },
   "lint-staged": {
@@ -78,6 +82,11 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
+    ]
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
     ]
   }
 }

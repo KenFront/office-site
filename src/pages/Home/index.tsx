@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { BookOpen, Gift, Hammer, School } from 'lucide-react'
+import { BookOpen, Gift, Hammer, School, NotebookPen } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { twMerge } from 'tailwind-merge'
 
@@ -29,6 +29,11 @@ const CARDS = [
     text: 'Product',
     icon: <Gift />,
     path: PAGE.Product
+  },
+  {
+    text: 'Diary',
+    icon: <NotebookPen />,
+    path: PAGE.Diary
   }
 ]
 

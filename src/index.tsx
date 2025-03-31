@@ -1,14 +1,9 @@
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
-import { BrowserRouter } from 'react-router'
 
 import App from './App'
 
 const container = document.getElementById('root') as HTMLDivElement
 const root = createRoot(container)
 
-root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-)
+root.render(<App />)

@@ -12,6 +12,7 @@ const NotFound = lazy(() => import('pages/NotFound'))
 const Tutorial = lazy(() => import('pages/Tutorial'))
 const Product = lazy(() => import('pages/Product'))
 const Todolist = lazy(() => import('pages/Product/Todolist'))
+const Diary = lazy(() => import('pages/Diary'))
 
 const Pages = () => {
   return (
@@ -23,6 +24,7 @@ const Pages = () => {
       <Route path={PAGE.Tutorial} element={<Tutorial />} />
       <Route path={PAGE.Product} element={<Product />} />
       <Route path={PAGE.Todolist} element={<Todolist />} />
+      <Route path={PAGE.Diary} element={<Diary />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

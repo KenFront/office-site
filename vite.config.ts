@@ -8,39 +8,53 @@ import manifest from './manifest.json'
 // import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config https://vitest.dev/config
-export default defineConfig({
-  plugins: [
-    react(),
-    tsconfigPaths(),
-    VitePWA({
-      manifest,
-      includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
-      devOptions: { enabled: false },
-      registerType: 'autoUpdate',
-      workbox: {
-        globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}']
+export default defineConfig(({ mode }) => {
+  const isMock = mode === 'mock'
+  const entryFile = isMock ? '/src/mockApp.tsx' : '/src/index.tsx'
+
+  return {
+    plugins: [
+      react(),
+      tsconfigPaths(),
+      VitePWA({
+        manifest,
+        includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
+        devOptions: { enabled: false },
+        registerType: 'autoUpdate',
+        workbox: {
+          globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}']
+        }
+      }),
+      {
+        name: 'html-transform',
+        transformIndexHtml(html) {
+          return html.replace(
+            /<script type="module" src="\/src\/index.tsx"><\/script>/,
+            `<script type="module" src="${entryFile}"></script>`
+          )
+        }
       }
-    })
-  ],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id, { getModuleInfo }) {
-          if (id.includes('node_modules')) {
-            const moduleInfo = getModuleInfo(id)
-            const importers = moduleInfo?.importers || []
-            if (importers.length > 1) {
-              return 'vendor'
+    ],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id, { getModuleInfo }) {
+            if (id.includes('node_modules')) {
+              const moduleInfo = getModuleInfo(id)
+              const importers = moduleInfo?.importers || []
+              if (importers.length > 1) {
+                return 'vendor'
+              }
             }
           }
-        }
-      },
-      plugins: [
-        // visualizer({
-        //   filename: 'stats.html',
-        //   open: true
-        // })
-      ]
+        },
+        plugins: [
+          // visualizer({
+          //   filename: 'stats.html',
+          //   open: true
+          // })
+        ]
+      }
     }
   }
 })
