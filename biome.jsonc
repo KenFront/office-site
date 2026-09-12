@@ -1,0 +1,122 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.12/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**", "!public", "!.vitest"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        // 沿用專案原本的分組慣例：外部套件 / src 下的絕對路徑別名 / 相對路徑，
+        // 中間以空行隔開（別名靠 tsconfig baseUrl=./src，需明確排除在套件群組之外）
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              [":NODE:", ":BUN:"],
+              ":BLANK_LINE:",
+              [
+                ":PACKAGE:",
+                ":PACKAGE_WITH_PROTOCOL:",
+                ":URL:",
+                "!api/**",
+                "!components/**",
+                "!hooks/**",
+                "!layout/**",
+                "!mock/**",
+                "!pages/**",
+                "!portfolio/**"
+              ],
+              ":BLANK_LINE:",
+              [
+                "api/**",
+                "components/**",
+                "hooks/**",
+                "layout/**",
+                "mock/**",
+                "pages/**",
+                "portfolio/**"
+              ],
+              ":BLANK_LINE:",
+              ":PATH:"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "correctness": {
+        // 對應原本 react-hooks/rules-of-hooks
+        "useHookAtTopLevel": "error",
+        // 對應原本 react-hooks/exhaustive-deps
+        "useExhaustiveDependencies": "warn"
+      },
+      "style": {
+        // 對應原本 @typescript-eslint/no-non-null-assertion: off
+        "noNonNullAssertion": "off",
+        // portfolio.css 既有樣式大量仰賴選擇器順序，遷移時不重構 CSS
+        "noDescendingSpecificity": "off"
+      },
+      // 以下 a11y 規則為 Biome recommended 新增，舊的 ESLint 設定沒有 jsx-a11y，
+      // 專案現有元件尚未處理（共 24 處，多數是 <button> 缺少 type）。
+      // 為了讓換工具本身不夾帶無障礙重構，先關閉；建議另開任務逐一修正後再打開。
+      "a11y": {
+        "useButtonType": "off",
+        "noSvgWithoutTitle": "off",
+        "useSemanticElements": "off",
+        "useKeyWithClickEvents": "off",
+        "useAriaPropsSupportedByRole": "off",
+        "noStaticElementInteractions": "off",
+        "noAutofocus": "off"
+      },
+      "suspicious": {
+        // 現有 4 處都是固定不重排的清單（字串切字元、靜態設定、Array.from）
+        "noArrayIndexKey": "off"
+      },
+      "nursery": {
+        // 原本對應 tailwindcss/classnames-order，但此規則仍在 nursery 階段：
+        // 它會把 `portfolio${night ? ' is-night' : ''}` 這類樣板字串的前導空白吃掉，
+        // 造成 class 黏在一起，且 --unsafe 修復會直接改壞程式碼，因此暫時關閉。
+        // 追蹤 https://github.com/biomejs/biome/issues/1274，穩定後再開啟。
+        "useSortedClasses": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none",
+      "arrowParentheses": "always",
+      "bracketSpacing": true
+    },
+    "globals": [
+      "vi",
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach",
+      "beforeAll",
+      "afterAll"
+    ]
+  }
+}

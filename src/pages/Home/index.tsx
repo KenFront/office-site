@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { BookOpen, Gift, Hammer, NotebookPen, School } from 'lucide-react'
 import { motion } from 'motion/react'
-import { BookOpen, Gift, Hammer, School, NotebookPen } from 'lucide-react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { twMerge } from 'tailwind-merge'
 

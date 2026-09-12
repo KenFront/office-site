@@ -1,6 +1,6 @@
 import { Cat, Home, User } from 'lucide-react'
 import { motion } from 'motion/react'
-import { useNavigate, useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { twMerge } from 'tailwind-merge'
 
 import PAGE from 'pages/constant'

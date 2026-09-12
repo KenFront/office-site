@@ -20,10 +20,12 @@
     "serve": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "lint": "eslint src --max-warnings=0",
+    "lint": "biome check . --error-on-warnings",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "update:lib": "pnpm up",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint:fix": "biome check . --write",
+    "format": "biome format . --write"
   },
   "dependencies": {
     "@react-router/dev": "^7.6.1",
@@ -36,31 +38,25 @@
     "react-router": "^7.6.1",
     "react-use": "^17.6.0",
     "tailwind-merge": "^3.3.0",
+    "three": "^0.185.1",
     "xstate": "^5.19.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.12",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.3.1",
     "@types/node": "^20.17.57",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@types/three": "^0.185.4",
     "@vitejs/plugin-react-swc": "^3.10.0",
     "@vitest/ui": "^1.6.1",
     "autoprefixer": "^10.4.21",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.4.1",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-tailwindcss": "^3.18.0",
     "happy-dom": "^15.11.7",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
     "msw": "^2.8.7",
     "postcss": "^8.5.4",
-    "prettier": "3.1.1",
     "rollup-plugin-visualizer": "^5.14.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.3.3",
@@ -77,12 +73,8 @@
     ]
   },
   "lint-staged": {
-    "*.css": [
-      "prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "*.{js,jsx,ts,tsx,css,json,jsonc}": [
+      "biome check --write --no-errors-on-unmatched"
     ]
   },
   "msw": {

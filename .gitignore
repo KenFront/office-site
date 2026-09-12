@@ -4,6 +4,7 @@ dist-ssr
 
 # dependencies
 /node_modules
+/.pnpm-store
 /.pnp
 .pnp.js
 

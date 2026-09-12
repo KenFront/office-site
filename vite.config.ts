@@ -1,8 +1,9 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
+
 import react from '@vitejs/plugin-react-swc'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 import manifest from './manifest.json'
 // import { visualizer } from 'rollup-plugin-visualizer'
@@ -18,11 +19,11 @@ export default defineConfig(({ mode }) => {
       tsconfigPaths(),
       VitePWA({
         manifest,
-        includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
+        includeAssets: ['ken-mark.svg', 'robots.txt'],
         devOptions: { enabled: false },
         registerType: 'autoUpdate',
         workbox: {
-          globPatterns: ['**/*.{js,css,html}', '**/*.{svg,png,jpg,gif}']
+          globPatterns: ['**/*.{js,css,html,woff2}', '**/*.{svg,png,jpg,gif}']
         }
       }),
       {
@@ -38,14 +39,8 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks(id, { getModuleInfo }) {
-            if (id.includes('node_modules')) {
-              const moduleInfo = getModuleInfo(id)
-              const importers = moduleInfo?.importers || []
-              if (importers.length > 1) {
-                return 'vendor'
-              }
-            }
+          manualChunks(id) {
+            if (id.includes('/node_modules/three/')) return 'three'
           }
         },
         plugins: [

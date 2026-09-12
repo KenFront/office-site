@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import { useMachine } from '@xstate/react'
-import { motion, Reorder } from 'motion/react'
-import { twMerge } from 'tailwind-merge'
 import { CircleX } from 'lucide-react'
+import { motion, Reorder } from 'motion/react'
+import { useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import todoMachine from './machine'
 

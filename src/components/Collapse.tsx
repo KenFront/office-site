@@ -1,5 +1,5 @@
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
 
 const Collapse = ({
   title,
